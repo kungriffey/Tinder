@@ -39,19 +39,16 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
       // Handle cancellations
     }
     else {
-      // Pushing User to Parse
-      PFFacebookUtils.logInInBackgroundWithReadPermissions(permissions) {
-        (user: PFUser?, error: NSError?) -> Void in
-        if let user = user {
-          if user.isNew {
-            println("User signed up and logged in through Facebook!")
-          } else {
-            println("User logged in through Facebook!")
-          }
-        } else {
-          println("Uh oh. The user cancelled the Facebook login.")
-        }
-      }
+      
+      // Log In (create/update currentUser) with FBSDKAccessToken
+      PFFacebookUtils.logInInBackgroundWithAccessToken(result.token, block: {
+      (user: PFUser?, error: NSError?) -> Void in
+      if user != nil {
+      println("User logged in through Facebook!")
+    } else {
+      println("Uh oh. There was an error logging in.")
+    }
+  })
       if result.grantedPermissions.contains("email")
       {
         // Do work
