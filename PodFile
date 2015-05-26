@@ -1,0 +1,6 @@
+pod "FBSDKCoreKit"
+pod "FBSDKLoginKit"
+pod "FBSDKShareKit"
+pod "Parse"
+pod "ParseFacebookUtils"
+pod "ParseUI"
