@@ -49,6 +49,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
   
   func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
     println("User Logged Out")
+    PFUser.logOut()
   }
   
   func returnUserData()
