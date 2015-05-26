@@ -13,6 +13,8 @@
 		2AF567E01B14EDFB007812E6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2AF567DF1B14EDFB007812E6 /* Images.xcassets */; };
 		2AF567E31B14EDFB007812E6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AF567E11B14EDFB007812E6 /* LaunchScreen.xib */; };
 		2AF567EF1B14EDFC007812E6 /* TinderWeek8Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF567EE1B14EDFC007812E6 /* TinderWeek8Tests.swift */; };
+		2AF567FA1B14EF1E007812E6 /* Tinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF567F91B14EF1E007812E6 /* Tinder.m */; };
+		DC6BAC3F581591171C2106F9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B26E14C18F2F89A6CDAA16C /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -26,6 +28,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		289F177295723CCAA7B1BC9F /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		2AF567D31B14EDFB007812E6 /* TinderWeek8.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinderWeek8.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AF567D71B14EDFB007812E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2AF567D81B14EDFB007812E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -36,6 +39,10 @@
 		2AF567E81B14EDFC007812E6 /* TinderWeek8Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TinderWeek8Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AF567ED1B14EDFC007812E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2AF567EE1B14EDFC007812E6 /* TinderWeek8Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderWeek8Tests.swift; sourceTree = "<group>"; };
+		2AF567F81B14EF1D007812E6 /* TinderWeek8-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TinderWeek8-Bridging-Header.h"; sourceTree = "<group>"; };
+		2AF567F91B14EF1E007812E6 /* Tinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tinder.m; sourceTree = "<group>"; };
+		9B26E14C18F2F89A6CDAA16C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2BCB5DC4718111436EC9100 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DC6BAC3F581591171C2106F9 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +70,8 @@
 				2AF567D51B14EDFB007812E6 /* TinderWeek8 */,
 				2AF567EB1B14EDFC007812E6 /* TinderWeek8Tests */,
 				2AF567D41B14EDFB007812E6 /* Products */,
+				95D3875C899AB4457FD82C8E /* Pods */,
+				319DBF70FCB735DFA0620B12 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,6 +93,8 @@
 				2AF567DF1B14EDFB007812E6 /* Images.xcassets */,
 				2AF567E11B14EDFB007812E6 /* LaunchScreen.xib */,
 				2AF567D61B14EDFB007812E6 /* Supporting Files */,
+				2AF567F91B14EF1E007812E6 /* Tinder.m */,
+				2AF567F81B14EF1D007812E6 /* TinderWeek8-Bridging-Header.h */,
 			);
 			path = TinderWeek8;
 			sourceTree = "<group>";
@@ -112,6 +124,23 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		319DBF70FCB735DFA0620B12 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9B26E14C18F2F89A6CDAA16C /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		95D3875C899AB4457FD82C8E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				289F177295723CCAA7B1BC9F /* Pods.debug.xcconfig */,
+				D2BCB5DC4718111436EC9100 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -119,9 +148,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2AF567F21B14EDFC007812E6 /* Build configuration list for PBXNativeTarget "TinderWeek8" */;
 			buildPhases = (
+				BE700A123CDAE562933A8B17 /* Check Pods Manifest.lock */,
 				2AF567CF1B14EDFB007812E6 /* Sources */,
 				2AF567D01B14EDFB007812E6 /* Frameworks */,
 				2AF567D11B14EDFB007812E6 /* Resources */,
+				E45BD8C31FC63F0C2DFED3BA /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -207,12 +238,46 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BE700A123CDAE562933A8B17 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E45BD8C31FC63F0C2DFED3BA /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2AF567CF1B14EDFB007812E6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2AF567DB1B14EDFB007812E6 /* ViewController.swift in Sources */,
+				2AF567FA1B14EF1E007812E6 /* Tinder.m in Sources */,
 				2AF567D91B14EDFB007812E6 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,21 +403,28 @@
 		};
 		2AF567F31B14EDFC007812E6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 289F177295723CCAA7B1BC9F /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = TinderWeek8/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TinderWeek8/TinderWeek8-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		2AF567F41B14EDFC007812E6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D2BCB5DC4718111436EC9100 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = TinderWeek8/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "TinderWeek8/TinderWeek8-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -409,6 +481,7 @@
 				2AF567F41B14EDFC007812E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2AF567F51B14EDFC007812E6 /* Build configuration list for PBXNativeTarget "TinderWeek8Tests" */ = {
 			isa = XCConfigurationList;
@@ -417,6 +490,7 @@
 				2AF567F71B14EDFC007812E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
