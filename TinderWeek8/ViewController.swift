@@ -29,8 +29,6 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
   }
   
   func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
-    println("User Logged In")
-    
     if ((error) != nil)
     {
       // Process error
