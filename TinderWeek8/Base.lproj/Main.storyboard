@@ -52,11 +52,14 @@
                                 </state>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="evG-Ah-ZvY">
-                                <rect key="frame" x="56" y="42" width="208" height="198"/>
+                                <rect key="frame" x="123" y="155" width="74" height="72"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="profileImageView" destination="evG-Ah-ZvY" id="1zy-Vj-rqY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P5N-MQ-QJa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

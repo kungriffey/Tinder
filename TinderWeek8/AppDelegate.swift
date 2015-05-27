@@ -19,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     Parse.setApplicationId("FKWGqZPSX8KrP8yeihR3zTQFZSJHIRw9BgdUVcX5", clientKey:"dLivbshDMeyckMcWCn6PNrzjylLIsY9R3LOR9TMb")
     PFFacebookUtils.initializeFacebookWithApplicationLaunchOptions(launchOptions)
     
+    /*if user == PFUser.currentUser() {
+      
+      
+    }*/
     return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
   }

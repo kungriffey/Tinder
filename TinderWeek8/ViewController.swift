@@ -72,12 +72,16 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
             //println("The url is \(userPictureURL)")
 
             parseUser["photoURL"] = userPictureURL
+            self.performSegueWithIdentifier("SwipeMain", sender: nil)
             parseUser.saveInBackgroundWithBlock {
               (success: Bool, error: NSError?) -> Void in
               if (success) {
                   println("The data has been saved")
                   //let svc:SwipeViewController
-                  self.performSegueWithIdentifier("SwipeMain", sender: nil)
+//                  dispatch_sync(dispatch_get_main_queue(), { () -> Void in
+//                 
+//                  })
+//      
                 
 
                 
