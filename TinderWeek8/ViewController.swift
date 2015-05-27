@@ -78,6 +78,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
                   println("The data has been saved")
                   //let svc:SwipeViewController
                   self.performSegueWithIdentifier("SwipeMain", sender: nil)
+                
 
                 
                   // The object has been saved.
