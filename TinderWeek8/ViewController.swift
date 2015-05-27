@@ -9,7 +9,8 @@
 import UIKit
 //d
 class ViewController: UIViewController, FBSDKLoginButtonDelegate {
-
+  var permissions = ["public_profile", "email", "user_friends"]
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
@@ -38,8 +39,58 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
       // Handle cancellations
     }
     else {
-      // If you ask for multiple permissions at once, you
-      // should check if specific permissions missing
+      
+      // Log In (create/update currentUser) with FBSDKAccessToken
+      PFFacebookUtils.logInInBackgroundWithAccessToken(result.token, block: {
+      (user: PFUser?, error: NSError?) -> Void in
+       
+      if let parseUser = user {
+        
+      if user != nil {
+      println("User logged in through Facebook!")
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "/me?fields=email,name,picture", parameters: nil)
+        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+         
+          if ((error) != nil)
+          {
+            // Process error
+            println("Error: \(error)")
+          }
+          else
+          {
+            //println("fetched user: \(result)")
+            //var userName : NSString = result.valueForKey("name") as! NSString
+            parseUser["name"] = result["name"]
+            //println("User Name is: \(userName)")
+            //let userEmail : NSString = result.valueForKey("email") as! NSString
+            //user?.email = userEmail as String
+            parseUser["email"] = result["email"]
+            //println("User Email is: \(userEmail)")
+            
+            //  Sort through the picture Dictionary to retreive the URL
+            let userPicture = result.valueForKey("picture") as? NSDictionary
+            let userPictureData = userPicture!.valueForKey("data") as? NSDictionary
+            let userPictureURL = userPictureData!.valueForKey("url") as? String
+            //println("The url is \(userPictureURL)")
+
+            parseUser["photoURL"] = userPictureURL
+            parseUser.saveInBackgroundWithBlock {
+              (success: Bool, error: NSError?) -> Void in
+              if (success) {
+                  println("The data has been saved")
+                  // The object has been saved.
+              } else {
+                  // There was a problem, check error.description
+              }
+            }
+          }
+        })
+        
+    } else {
+      println("Uh oh. There was an error logging in.")
+          }
+        }
+  })
       if result.grantedPermissions.contains("email")
       {
         // Do work
@@ -47,36 +98,20 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
   }
   
+  
+  
+  
   func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
     println("User Logged Out")
+    PFUser.logOut()
   }
   
-  func returnUserData()
-  {
-    let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
-    graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-      
-      if ((error) != nil)
-      {
-        // Process error
-        println("Error: \(error)")
-      }
-      else
-      {
-        println("fetched user: \(result)")
-        let userName : NSString = result.valueForKey("name") as! NSString
-        println("User Name is: \(userName)")
-        let userEmail : NSString = result.valueForKey("email") as! NSString
-        println("User Email is: \(userEmail)")
-      }
-    })
-  }
+  
+  
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
-
-
 }
 
