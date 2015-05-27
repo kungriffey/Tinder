@@ -7,9 +7,9 @@
 //
 
 import UIKit
-//test
+
 class ViewController: UIViewController, FBSDKLoginButtonDelegate {
-  var permissions = ["public_profile", "email", "user_friends"]
+  //var permissions = ["public_profile", "email", "user_friends"]
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -76,6 +76,10 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
               (success: Bool, error: NSError?) -> Void in
               if (success) {
                   println("The data has been saved")
+                  //let svc:SwipeViewController
+                  self.performSegueWithIdentifier("SwipeMain", sender: nil)
+
+                
                   // The object has been saved.
               } else {
                   // There was a problem, check error.description

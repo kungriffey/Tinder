@@ -14,6 +14,7 @@
 		2AF567E31B14EDFB007812E6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2AF567E11B14EDFB007812E6 /* LaunchScreen.xib */; };
 		2AF567EF1B14EDFC007812E6 /* TinderWeek8Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF567EE1B14EDFC007812E6 /* TinderWeek8Tests.swift */; };
 		2AF567FA1B14EF1E007812E6 /* Tinder.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF567F91B14EF1E007812E6 /* Tinder.m */; };
+		2AF567FC1B165774007812E6 /* SwipeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AF567FB1B165774007812E6 /* SwipeViewController.swift */; };
 		DC6BAC3F581591171C2106F9 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B26E14C18F2F89A6CDAA16C /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +42,7 @@
 		2AF567EE1B14EDFC007812E6 /* TinderWeek8Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TinderWeek8Tests.swift; sourceTree = "<group>"; };
 		2AF567F81B14EF1D007812E6 /* TinderWeek8-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TinderWeek8-Bridging-Header.h"; sourceTree = "<group>"; };
 		2AF567F91B14EF1E007812E6 /* Tinder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Tinder.m; sourceTree = "<group>"; };
+		2AF567FB1B165774007812E6 /* SwipeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwipeViewController.swift; sourceTree = "<group>"; };
 		9B26E14C18F2F89A6CDAA16C /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D2BCB5DC4718111436EC9100 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -89,6 +91,7 @@
 			children = (
 				2AF567D81B14EDFB007812E6 /* AppDelegate.swift */,
 				2AF567DA1B14EDFB007812E6 /* ViewController.swift */,
+				2AF567FB1B165774007812E6 /* SwipeViewController.swift */,
 				2AF567DC1B14EDFB007812E6 /* Main.storyboard */,
 				2AF567DF1B14EDFB007812E6 /* Images.xcassets */,
 				2AF567E11B14EDFB007812E6 /* LaunchScreen.xib */,
@@ -279,6 +282,7 @@
 				2AF567DB1B14EDFB007812E6 /* ViewController.swift in Sources */,
 				2AF567FA1B14EF1E007812E6 /* Tinder.m in Sources */,
 				2AF567D91B14EDFB007812E6 /* AppDelegate.swift in Sources */,
+				2AF567FC1B165774007812E6 /* SwipeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
