@@ -44,8 +44,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
       PFFacebookUtils.logInInBackgroundWithAccessToken(result.token, block: {
       (user: PFUser?, error: NSError?) -> Void in
        
-        let parseUser = user
-        
+      if let parseUser = user {
         
       if user != nil {
       println("User logged in tkhrough Facebook!")
@@ -60,26 +59,22 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
           else
           {
             println("fetched user: \(result)")
-            var userName : NSString = result.valueForKey("name") as! NSString
-            user?.username = userName as String
-            println("User Name is: \(userName)")
-            let userEmail : NSString = result.valueForKey("email") as! NSString
-            user?.email = userEmail as String
-            println("User Email is: \(userEmail)")
+            //var userName : NSString = result.valueForKey("name") as! NSString
+            parseUser["name"] = result["name"]
+            //println("User Name is: \(userName)")
+            //let userEmail : NSString = result.valueForKey("email") as! NSString
+            //user?.email = userEmail as String
+            parseUser["email"] = result["email"]
+            //println("User Email is: \(userEmail)")
             
             //  Sort through the picture Dictionary to retreive the URL
             let userPicture = result.valueForKey("picture") as? NSDictionary
-            //println("the url is \(userPicture)")
-            
             let userPictureData = userPicture!.valueForKey("data") as? NSDictionary
-            //println(" the Picture Data is \(userPictureData)")
-            
             let userPictureURL = userPictureData!.valueForKey("url") as? String
             println("The url is \(userPictureURL)")
-//            user["Photo"] = userPictureURL!
 
-            
-            user?.saveInBackgroundWithBlock {
+            parseUser["photoURL"] = userPictureURL
+            parseUser.saveInBackgroundWithBlock {
               (success: Bool, error: NSError?) -> Void in
               if (success) {
                   println("The data has been saved")
@@ -93,7 +88,8 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         
     } else {
       println("Uh oh. There was an error logging in.")
-    }
+          }
+        }
   })
       if result.grantedPermissions.contains("email")
       {
