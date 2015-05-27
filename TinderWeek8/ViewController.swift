@@ -47,7 +47,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
       if let parseUser = user {
         
       if user != nil {
-      println("User logged in tkhrough Facebook!")
+      println("User logged in through Facebook!")
         let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "/me?fields=email,name,picture", parameters: nil)
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
          
@@ -58,7 +58,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
           }
           else
           {
-            println("fetched user: \(result)")
+            //println("fetched user: \(result)")
             //var userName : NSString = result.valueForKey("name") as! NSString
             parseUser["name"] = result["name"]
             //println("User Name is: \(userName)")
@@ -71,16 +71,16 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
             let userPicture = result.valueForKey("picture") as? NSDictionary
             let userPictureData = userPicture!.valueForKey("data") as? NSDictionary
             let userPictureURL = userPictureData!.valueForKey("url") as? String
-            println("The url is \(userPictureURL)")
+            //println("The url is \(userPictureURL)")
 
             parseUser["photoURL"] = userPictureURL
             parseUser.saveInBackgroundWithBlock {
               (success: Bool, error: NSError?) -> Void in
               if (success) {
                   println("The data has been saved")
-                // The object has been saved.
+                  // The object has been saved.
               } else {
-                // There was a problem, check error.description
+                  // There was a problem, check error.description
               }
             }
           }
@@ -98,10 +98,16 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
   }
   
+  
+  
+  
   func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
     println("User Logged Out")
     PFUser.logOut()
   }
+  
+  
+  
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
