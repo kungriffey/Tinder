@@ -45,6 +45,35 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
       (user: PFUser?, error: NSError?) -> Void in
       if user != nil {
       println("User logged in through Facebook!")
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+        graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
+         
+          if ((error) != nil)
+          {
+            // Process error
+            println("Error: \(error)")
+          }
+          else
+          {
+            println("fetched user: \(result)")
+            var userName : NSString = result.valueForKey("name") as! NSString
+            user?.username = userName as String
+            println("User Name is: \(userName)")
+            let userEmail : NSString = result.valueForKey("email") as! NSString
+            user?.email = userEmail as String
+            println("User Email is: \(userEmail)")
+            user?.saveInBackgroundWithBlock {
+              (success: Bool, error: NSError?) -> Void in
+              if (success) {
+                  println("The data has been saved")
+                // The object has been saved.
+              } else {
+                // There was a problem, check error.description
+              }
+            }
+          }
+        })
+        
     } else {
       println("Uh oh. There was an error logging in.")
     }
