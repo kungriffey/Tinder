@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//d
+
 class ViewController: UIViewController, FBSDKLoginButtonDelegate {
   var permissions = ["public_profile", "email", "user_friends"]
   
