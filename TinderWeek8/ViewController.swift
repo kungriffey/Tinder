@@ -43,9 +43,13 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
       // Log In (create/update currentUser) with FBSDKAccessToken
       PFFacebookUtils.logInInBackgroundWithAccessToken(result.token, block: {
       (user: PFUser?, error: NSError?) -> Void in
+       
+        let parseUser = user
+        
+        
       if user != nil {
-      println("User logged in through Facebook!")
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
+      println("User logged in tkhrough Facebook!")
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "/me?fields=email,name,picture", parameters: nil)
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
          
           if ((error) != nil)
@@ -62,6 +66,19 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
             let userEmail : NSString = result.valueForKey("email") as! NSString
             user?.email = userEmail as String
             println("User Email is: \(userEmail)")
+            
+            //  Sort through the picture Dictionary to retreive the URL
+            let userPicture = result.valueForKey("picture") as? NSDictionary
+            //println("the url is \(userPicture)")
+            
+            let userPictureData = userPicture!.valueForKey("data") as? NSDictionary
+            //println(" the Picture Data is \(userPictureData)")
+            
+            let userPictureURL = userPictureData!.valueForKey("url") as? String
+            println("The url is \(userPictureURL)")
+//            user["Photo"] = userPictureURL!
+
+            
             user?.saveInBackgroundWithBlock {
               (success: Bool, error: NSError?) -> Void in
               if (success) {
@@ -88,27 +105,6 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
   func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
     println("User Logged Out")
     PFUser.logOut()
-  }
-  
-  func returnUserData()
-  {
-    let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "me", parameters: nil)
-    graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
-      
-      if ((error) != nil)
-      {
-        // Process error
-        println("Error: \(error)")
-      }
-      else
-      {
-        println("fetched user: \(result)")
-        let userName : NSString = result.valueForKey("name") as! NSString
-        println("User Name is: \(userName)")
-        let userEmail : NSString = result.valueForKey("email") as! NSString
-        println("User Email is: \(userEmail)")
-      }
-    })
   }
   
   override func didReceiveMemoryWarning() {
