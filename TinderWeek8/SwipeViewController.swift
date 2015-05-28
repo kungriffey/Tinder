@@ -25,16 +25,26 @@ class SwipeViewController : UIViewController, FBSDKLoginButtonDelegate{
   
   
   @IBOutlet var profileImageView: UIImageView!
+  @IBOutlet weak var fullNameLabel: UILabel!
+  @IBOutlet weak var emailLabel: UILabel!
   
   override func viewWillAppear(animated: Bool) {
     var query = PFUser.query()!
-    query.selectKeys(["photoURL"])
-    println(query)
+    //query.selectKeys(["photoURL","name", "email"])
+    //println(query)
     query.findObjectsInBackgroundWithBlock { (objects:[AnyObject]?, error:NSError?) -> Void in
-//      println("objects: \(objects)")
+//      println("objects: \( objects)")
+      
+      
       if let result = objects {
         for object in result {
           if let user = object as? PFUser,
+
+//            let name = user["name"] as? String{
+//              self.fullNameLabel.text = name
+//
+//          }
+
             let url = user["photoURL"] as? String{
               //println("[DEBUG] url is \(url)")
               dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), { () -> Void in

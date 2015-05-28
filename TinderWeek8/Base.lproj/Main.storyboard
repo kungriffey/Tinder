@@ -64,6 +64,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="emailLabel" destination="kRh-5a-eGm" id="z80-Jk-WEZ"/>
+                        <outlet property="fullNameLabel" destination="mM5-wG-EnM" id="03X-YB-UK7"/>
                         <outlet property="profileImageView" destination="evG-Ah-ZvY" id="1zy-Vj-rqY"/>
                     </connections>
                 </viewController>
