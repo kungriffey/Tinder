@@ -17,6 +17,8 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
     if (FBSDKAccessToken.currentAccessToken() != nil)
     {
       // User is already logged in, do work such as go to next view controller.
+      self.performSegueWithIdentifier("SwipeMain", sender: nil)
+
     }
     else
     {
@@ -72,6 +74,8 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
             //println("The url is \(userPictureURL)")
 
             parseUser["photoURL"] = userPictureURL
+            //self.presentViewController(SwipeViewController(), animated: true, completion: nil)
+
             self.performSegueWithIdentifier("SwipeMain", sender: nil)
             parseUser.saveInBackgroundWithBlock {
               (success: Bool, error: NSError?) -> Void in

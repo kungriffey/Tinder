@@ -9,14 +9,17 @@
 import Foundation
 import UIKit
 
-class SwipeViewController : UIViewController {
+class SwipeViewController : UIViewController, FBSDKLoginButtonDelegate{
   
   override func viewDidLoad() {
 
-    let data:NSData
-    let imgURL = NSURL(string: "")
   
-
+    let fbLoginButton : FBSDKLoginButton = FBSDKLoginButton()
+    self.view.addSubview(fbLoginButton)
+    self.view.bringSubviewToFront(fbLoginButton)
+    fbLoginButton.center = CGPoint(x: view.center.x, y: view.frame.size.height - view.frame.size.height / 8)
+    fbLoginButton.readPermissions = ["public_profile", "email", "user_friends"]
+    fbLoginButton.delegate = self
   
   }
   
@@ -47,4 +50,19 @@ class SwipeViewController : UIViewController {
       }
     }
   }
+  
+  
+  func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {}
+  
+  func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
+    PFUser.logOut()
+    presentViewController(ViewController(), animated: true, completion: nil)
+  }
+  
+  
+  
+  
 }
+
+
+
