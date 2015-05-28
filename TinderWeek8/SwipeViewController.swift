@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 class SwipeViewController : UIViewController, FBSDKLoginButtonDelegate{
-  
+  //derp
   override func viewDidLoad() {
 
   
