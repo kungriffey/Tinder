@@ -21,6 +21,11 @@ class SwipeViewController : UIViewController, FBSDKLoginButtonDelegate{
     fbLoginButton.readPermissions = ["public_profile", "email", "user_friends"]
     fbLoginButton.delegate = self
   
+    PFGeoPoint.geoPointForCurrentLocationInBackground { (geopoint, error) -> Void in
+      //display the coordinates
+      println(geopoint)
+    }
+    
   }
   
   
