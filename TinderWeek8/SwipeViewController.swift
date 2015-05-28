@@ -11,8 +11,6 @@ import UIKit
 
 class SwipeViewController : UIViewController, FBSDKLoginButtonDelegate{
   
-  var listOfMatch = []
-
   override func viewDidLoad() {
 
   
