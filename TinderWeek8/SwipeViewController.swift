@@ -11,6 +11,8 @@ import UIKit
 
 class SwipeViewController : UIViewController, FBSDKLoginButtonDelegate{
   
+  var listOfMatch = []
+
   override func viewDidLoad() {
 
   
@@ -39,19 +41,12 @@ class SwipeViewController : UIViewController, FBSDKLoginButtonDelegate{
     //println(query)
     query.findObjectsInBackgroundWithBlock { (objects:[AnyObject]?, error:NSError?) -> Void in
 //      println("objects: \( objects)")
-      
-      
       if let result = objects {
         for object in result {
-          if let user = object as? PFUser,
-
-//            let name = user["name"] as? String{
-//              self.fullNameLabel.text = name
-//
-//          }
-
-            let url = user["photoURL"] as? String{
-              //println("[DEBUG] url is \(url)")
+          
+          if let user = object as? PFUser {
+            
+            if let url = user["photoURL"] as? String{
               dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), { () -> Void in
                 if let data = NSData(contentsOfURL: NSURL(string: url)!){
                   dispatch_sync(dispatch_get_main_queue(), { () -> Void in
@@ -60,6 +55,16 @@ class SwipeViewController : UIViewController, FBSDKLoginButtonDelegate{
                   })
                 }
               })
+            }
+            //  Check for Name
+            if let name = user["name"] as? String{
+              self.fullNameLabel.text = name
+            }
+            
+            // Check for Email
+            if let email = user["email"] as? String{
+              self.emailLabel.text = email
+            }
           }
         }
       }
@@ -73,8 +78,6 @@ class SwipeViewController : UIViewController, FBSDKLoginButtonDelegate{
     PFUser.logOut()
     presentViewController(ViewController(), animated: true, completion: nil)
   }
-  
-  
   
   
 }
