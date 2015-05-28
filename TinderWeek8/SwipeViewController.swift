@@ -60,7 +60,6 @@ class SwipeViewController : UIViewController, FBSDKLoginButtonDelegate{
             if let name = user["name"] as? String{
               self.fullNameLabel.text = name
             }
-            
             // Check for Email
             if let email = user["email"] as? String{
               self.emailLabel.text = email
