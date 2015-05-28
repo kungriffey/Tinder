@@ -14,6 +14,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
   override func viewDidLoad() {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
+    self.view.backgroundColor? = UIColor.yellowColor()
     if (FBSDKAccessToken.currentAccessToken() != nil)
     {
       // User is already logged in, do work such as go to next view controller.
@@ -81,15 +82,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
               (success: Bool, error: NSError?) -> Void in
               if (success) {
                   println("The data has been saved")
-                  //let svc:SwipeViewController
-//                  dispatch_sync(dispatch_get_main_queue(), { () -> Void in
-//                 
-//                  })
-//      
-                
 
-                
-                  // The object has been saved.
               } else {
                   // There was a problem, check error.description
               }
