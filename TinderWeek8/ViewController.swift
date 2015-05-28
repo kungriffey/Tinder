@@ -46,7 +46,7 @@ class ViewController: UIViewController, FBSDKLoginButtonDelegate {
         
       if user != nil {
       println("User logged in through Facebook!")
-        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "/me?fields=email,name,picture", parameters: nil)
+        let graphRequest : FBSDKGraphRequest = FBSDKGraphRequest(graphPath: "/me?fields=email,name,picture.type(square).width(300).height(300),age_range,gender", parameters: nil)
         graphRequest.startWithCompletionHandler({ (connection, result, error) -> Void in
          
           if ((error) != nil)
