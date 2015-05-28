@@ -73,7 +73,9 @@ class SwipeViewController : UIViewController, FBSDKLoginButtonDelegate{
   
   func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
     PFUser.logOut()
-    presentViewController(ViewController(), animated: true, completion: nil)
+    self.performSegueWithIdentifier("returnLogin", sender: nil)
+
+//    presentViewController(ViewController(), animated: true, completion: nil)
   }
   
   
