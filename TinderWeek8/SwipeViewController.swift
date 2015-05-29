@@ -83,7 +83,59 @@ class SwipeViewController : UIViewController, FBSDKLoginButtonDelegate{
   }
   
   @IBAction func cardSwipeGesture(sender: UIPanGestureRecognizer) {
-    
+    if sender.state == UIGestureRecognizerState.Began {
+      frame = sender.view?.frame
+    }
+    let translation = sender.translationInView(self.view)
+    // get was has been dragged
+    var profile = sender.view!
+    xFromCenter += translation.x
+    var scale = min( 100 / abs(xFromCenter), 1)
+    profile.center = CGPoint(x: profile.center.x + translation.x, y: profile.center.y)
+    // reset translation
+    sender.setTranslation(CGPointZero, inView: self.view)
+    //rotate label
+    var rotation:CGAffineTransform = CGAffineTransformMakeRotation(translation.x / 200)
+    // stretch the current view
+    var stretch:CGAffineTransform = CGAffineTransformScale(rotation, scale, scale)
+    //imageView.transform = stretch
+    // check if chosen or not chosen
+    if profile.center.x <  100 {
+      //println("not chose")
+      // do nothing
+      if profile.center.x <  20 {
+        //println("swiped Left")
+      }
+    } else {
+      //println("chosen")
+      // Add to chosen list on parse
+      if profile.center.x > 300 {
+      }
+    }
+    if sender.state == UIGestureRecognizerState.Ended {
+      
+      
+      
+      // set the label back
+      //            profile.center = CGPointMake(view.bounds.width / 2, view.bounds.height / 2)
+      //            // undo scale
+      //            scale = max(abs(xFromCenter) / 100, 1)
+      //            // undo rotation and stretch
+      //            rotation = CGAffineTransformMakeRotation(0)
+      //            // stretch the current view
+      //            stretch = CGAffineTransformScale(rotation, scale, scale)
+      //            // set image to original size after scaling
+      
+      UIView.animateWithDuration(0.3, animations:
+        { () -> Void in
+          profile.frame = self.frame
+        }, completion: {
+          (success) -> Void in
+      })
+      
+      
+    }
+    // TODO: load next image
     
   }
   
