@@ -11,14 +11,17 @@ import UIKit
 
 class MatchViewController:UIViewController {
   
+
+
+  
+  @IBOutlet weak var imageView: UIImageView!
   override func viewDidLoad() {
     view.backgroundColor = UIColor.yellowColor()
-    
+    self.imageView.layer.cornerRadius = 5
+    self.imageView.image = UIImage(named:"match")
   }
   
   override func viewWillAppear(animated: Bool) {
-    
-    
   }
   
   
