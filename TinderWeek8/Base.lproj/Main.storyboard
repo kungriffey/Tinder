@@ -60,10 +60,19 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xyv-aZ-ZkA" userLabel="BackgroundView">
+                                <rect key="frame" x="43" y="28" width="243" height="301"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Ejj-Qw-peO" appends="YES" id="NLz-R4-tyA"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="backgroundCardView" destination="xyv-aZ-ZkA" id="dib-aB-cat"/>
                         <outlet property="emailLabel" destination="kRh-5a-eGm" id="z80-Jk-WEZ"/>
                         <outlet property="fullNameLabel" destination="mM5-wG-EnM" id="03X-YB-UK7"/>
                         <outlet property="profileImageView" destination="evG-Ah-ZvY" id="1zy-Vj-rqY"/>
@@ -71,6 +80,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P5N-MQ-QJa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="Ejj-Qw-peO">
+                    <connections>
+                        <action selector="cardSwipeGesture:" destination="Yo2-FC-tR0" id="yVb-ZK-ef2"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="554" y="224"/>
         </scene>

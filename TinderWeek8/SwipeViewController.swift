@@ -11,9 +11,18 @@ import UIKit
 
 class SwipeViewController : UIViewController, FBSDKLoginButtonDelegate{
   
-  override func viewDidLoad() {
+  var xFromCenter:CGFloat = 0
+  var frame:CGRect!
 
+  @IBOutlet var profileImageView: UIImageView!
+  @IBOutlet weak var fullNameLabel: UILabel!
+  @IBOutlet weak var emailLabel: UILabel!
+  @IBOutlet weak var backgroundCardView: UIView!
   
+  
+  override func viewDidLoad() {
+    frame = CGRectZero
+
     let fbLoginButton : FBSDKLoginButton = FBSDKLoginButton()
     self.view.addSubview(fbLoginButton)
     self.view.bringSubviewToFront(fbLoginButton)
@@ -29,16 +38,11 @@ class SwipeViewController : UIViewController, FBSDKLoginButtonDelegate{
   }
   
   
-  @IBOutlet var profileImageView: UIImageView!
-  @IBOutlet weak var fullNameLabel: UILabel!
-  @IBOutlet weak var emailLabel: UILabel!
+
   
   override func viewWillAppear(animated: Bool) {
     var query = PFUser.query()!
-    //query.selectKeys(["photoURL","name", "email"])
-    //println(query)
     query.findObjectsInBackgroundWithBlock { (objects:[AnyObject]?, error:NSError?) -> Void in
-//      println("objects: \( objects)")
       if let result = objects {
         for object in result {
           
@@ -78,6 +82,10 @@ class SwipeViewController : UIViewController, FBSDKLoginButtonDelegate{
 //    presentViewController(ViewController(), animated: true, completion: nil)
   }
   
+  @IBAction func cardSwipeGesture(sender: UIPanGestureRecognizer) {
+    
+    
+  }
   
 }
 
