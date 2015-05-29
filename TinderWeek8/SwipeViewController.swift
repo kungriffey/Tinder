@@ -13,12 +13,19 @@ class SwipeViewController : UIViewController, FBSDKLoginButtonDelegate{
   
   var xFromCenter:CGFloat = 0
   var frame:CGRect!
+  
+  enum cardState:Int{
+    case NoSelection
+    case SwipedLeft
+    case SwipedRight
+  }
 
   @IBOutlet var profileImageView: UIImageView!
   @IBOutlet weak var fullNameLabel: UILabel!
   @IBOutlet weak var emailLabel: UILabel!
   @IBOutlet weak var backgroundCardView: UIView!
-  
+  var cardSelectionState:cardState = .NoSelection
+
   
   override func viewDidLoad() {
     frame = CGRectZero
@@ -37,8 +44,6 @@ class SwipeViewController : UIViewController, FBSDKLoginButtonDelegate{
     
   }
   
-  
-
   
   override func viewWillAppear(animated: Bool) {
     var query = PFUser.query()!
@@ -105,11 +110,13 @@ class SwipeViewController : UIViewController, FBSDKLoginButtonDelegate{
       // do nothing
       if profile.center.x <  20 {
         //println("swiped Left")
+        cardSelectionState = .SwipedLeft
       }
     } else {
       //println("chosen")
       // Add to chosen list on parse
       if profile.center.x > 300 {
+        cardSelectionState = .SwipedRight
       }
     }
     if sender.state == UIGestureRecognizerState.Ended {
@@ -131,12 +138,37 @@ class SwipeViewController : UIViewController, FBSDKLoginButtonDelegate{
           profile.frame = self.frame
         }, completion: {
           (success) -> Void in
+          if (success) {
+            switch self.cardSelectionState {
+            case .NoSelection:
+              println("No Selection")
+            case .SwipedLeft:
+              self.unlike()
+            case .SwipedRight:
+              self.like()
+            default:
+              println("derp")
+            }
+            self.cardSelectionState = .NoSelection
+            
+          }
       })
       
       
     }
     // TODO: load next image
     
+  }
+  
+  
+  
+  func unlike() {
+    
+  }
+  
+  func like() {
+    
+    self.performSegueWithIdentifier("Match", sender: nil)
   }
   
 }
